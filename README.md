@@ -1,24 +1,62 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+* nickname   (string型,NOT NULL)
+* email   (string型,NOT NULL,ユニーク制約)
+* encrypted_password  (string型,NOT NULL)
+* name   (string型,NOT NULL)
+* name_kana   (string型,NOT NULL)
+* birthday   (date型,NOT NULL)
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
+- has_one  :order
 
-* Configuration
 
-* Database creation
+## itemsテーブル
+* item_name   (string型,NOT NULL)
+* item_description   (text型,NOT NULL)
+* item_category   (string型, NOT NULL)
+* item_status    (string型, NOT NULL)
+* delivery_fee   (string型, NOT NULL)
+* shipping_area   (string型, NOT NULL)
+* days to ship   (string型, NOT NULL)
+* price   (integer型, NOT NULL)
+* user   (reference型, NOT NULL,外部キー)
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :order
+- has_many  :comments
 
-* Services (job queues, cache servers, search engines, etc.)
+## ordersテーブル
+* card_number   (integer型, NOT NULL)
+* expiration_date   (integer型, NOT NULL)
+* security_code   (integer型, NOT NULL)
+* postal_code   (integer型, NOT NULL)
+* prefectures   (string型, NOT NULL)
+* municipalities   (string型, NOT NULL)
+* address   (string型, NOT NULL)
+* building_name   (text型,NOT NULL)
+* phone_number   (integer型, NOT NULL)
+* user   (reference型, NOT NULL,外部キー)
+* item   (reference型, NOT NULL,外部キー)
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+- belongs_to :item
+
+## commentsテーブル
+* content  (text型, NOT NULL)
+* item   (reference型, NOT NULL,外部キー)
+* user   (reference型, NOT NULL,外部キー)
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
