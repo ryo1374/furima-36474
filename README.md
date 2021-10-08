@@ -17,13 +17,9 @@
 
 
 ## itemsテーブル
+
 * item_name   (string型,NOT NULL)
 * item_description   (text型,NOT NULL)
-* item_category   (string型, NOT NULL)
-* item_status    (string型, NOT NULL)
-* delivery_fee   (string型, NOT NULL)
-* shipping_area   (string型, NOT NULL)
-* days to ship   (string型, NOT NULL)
 * price   (integer型, NOT NULL)
 * user   (reference型, NOT NULL,外部キー)
 
@@ -34,11 +30,8 @@
 - has_many  :comments
 
 ## ordersテーブル
-* card_number   (integer型, NOT NULL)
-* expiration_date   (integer型, NOT NULL)
-* security_code   (integer型, NOT NULL)
+
 * postal_code   (integer型, NOT NULL)
-* prefectures   (string型, NOT NULL)
 * municipalities   (string型, NOT NULL)
 * address   (string型, NOT NULL)
 * building_name   (text型,NOT NULL)
@@ -51,12 +44,3 @@
 - belongs_to :user
 - belongs_to :item
 
-## commentsテーブル
-* content  (text型, NOT NULL)
-* item   (reference型, NOT NULL,外部キー)
-* user   (reference型, NOT NULL,外部キー)
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
