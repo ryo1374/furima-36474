@@ -21,33 +21,32 @@
 
 * item_name   (string型,NOT NULL)
 * item_description   (text型,null: false)
-* item_category   (string型, null: false)
-* item_status    (string型, null: false)
-* delivery_fee   (string型, null: false)
-* shipping_area   (string型, null: false)
-* days to ship   (string型, null: false)
+* category_id   (integer型, null: false,)
+* status_id    (integer型, null: false)
+* fee_id   (integer型, null: false)
+* area_id   (integer型, null: false)
+* ship_id   (integer型, null: false)
 * price   (integer型, null: false)
 * user   (reference型, null: false,外部キー)
 
 ### Association
 
-- has_many :users
-- has_many :orders, through: :order_users
+- belongs_to :user
+- has_one :item, through: :order_user
 
 
 ## ordersテーブル
 
-* postal_code   (integer型, null: false)
-* prefectures   (string型, null: false)
+* postal_code   (string型, null: false)
+* area_id   (integer型, null: false)
 * municipalities   (string型, null: false)
 * address   (string型, null: false)
-* building_name   (text型, null: false)
-* phone_number   (integer型, null: false)
+* building_name   (text型)
+* phone_number   (string型, null: false)
 
 ### Association
 
-- has_many :items
-- has_many :orders, through: :order_users
+- has_one :order_user
 
 ## order_usersテーブル
 * user   (reference型, null: false, 外部キー)
@@ -57,3 +56,4 @@
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :order
