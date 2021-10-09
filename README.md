@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items
-- has_many :users, through: :order_users
+- has_many :order_users
 
 
 ## itemsテーブル
@@ -32,7 +32,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :item, through: :order_user
+- has_one :order_user
 
 
 ## ordersテーブル
@@ -43,17 +43,18 @@
 * address   (string型, null: false)
 * building_name   (text型)
 * phone_number   (string型, null: false)
+* order_user   (reference型, null: false,外部キー)
 
 ### Association
 
-- has_one :order_user
+- belongs_to :order_user
 
 ## order_usersテーブル
 * user   (reference型, null: false, 外部キー)
-* order   (reference型, null: false, 外部キー)
+* item   (reference型, null: false, 外部キー)
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :order
+- has_one :order
