@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-* nickname   (string型, null: false)
-* email   (string型, null: false,ユニーク制約)
-* encrypted_password  (string型,null: false)
-* last_name   (string型, null: false)
-* first_name   (string型, null: false)
-* last_kana   (string型, null: false)
-* first_kana   (string型, null: false)
-* birthday   (date型, null: false)
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | null: false, unique:true |
+| encrypted_password | string | null: false              |
+| last_name          | string | null: false              |
+| first_name         | string | null: false              |
+| last_kana          | string | null: false              |
+| first_kana         | string | null: false              |
+| birthday           | date   | null: false              |
 
 ### Association
 
@@ -19,15 +21,17 @@
 
 ## itemsテーブル
 
-* item_name   (string型,NOT NULL)
-* item_description   (text型,null: false)
-* category_id   (integer型, null: false,)
-* status_id    (integer型, null: false)
-* fee_id   (integer型, null: false)
-* area_id   (integer型, null: false)
-* ship_id   (integer型, null: false)
-* price   (integer型, null: false)
-* user   (reference型, null: false,外部キー)
+| Column             | Type      |  Options                       |
+| ------------------ | --------- | ------------------------------ |
+| item_name          | string    | null: false                    |
+| item_description   | text      | null: false                    |
+| category_id        | integer   | null: false                    |
+| status_id          | integer   | null: false                    |
+| fee_id             | integer   | null: false                    |
+| area_id            | integer   | null: false                    |
+| ship_id            | integer   | null: false                    |
+| price              | integer   | null: false                    |
+| user               | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -37,21 +41,26 @@
 
 ## ordersテーブル
 
-* postal_code   (string型, null: false)
-* area_id   (integer型, null: false)
-* municipalities   (string型, null: false)
-* address   (string型, null: false)
-* building_name   (text型)
-* phone_number   (string型, null: false)
-* order_user   (reference型, null: false,外部キー)
+| Column             | Type      |  Options                       |
+| ------------------ | --------- | ------------------------------ |
+| postal_code        | string    | null: false                    |
+| area_id            | integer   | null: false                    |
+| municipalities     | string    | null: false                    |
+| address            | string    | null: false                    |
+| building_name      | text      |                                |
+| phone_number       | string    | null: false                    |
+| order_user         | reference | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :order_user
 
 ## order_usersテーブル
-* user   (reference型, null: false, 外部キー)
-* item   (reference型, null: false, 外部キー)
+
+| Column             | Type      |  Options                       |
+| ------------------ | --------- | ------------------------------ |
+| user               | reference | null: false, foreign_key: true |
+| item               | reference | null: false, foreign_key: true |
 
 ### Association
 
