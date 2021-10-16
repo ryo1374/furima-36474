@@ -11,11 +11,6 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :item_description
-    validates :category_id
-    validates :status_id
-    validates :fee_id
-    validates :area_id
-    validates :ship_id
     validates :price
   end
 
