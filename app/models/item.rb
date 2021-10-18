@@ -13,10 +13,16 @@ class Item < ApplicationRecord
     validates :item_name
     validates :item_description
     validates :price
-  end
+    validates :category_id,  numericality: { other_than: 1, message: "can't be blank" } 
+    validates :status_id,  numericality: { other_than: 1, message: "can't be blank" } 
+    validates :fee_id,  numericality: { other_than: 1, message: "can't be blank" } 
+    validates :area_id,  numericality: { other_than: 1, message: "can't be blank" } 
+    validates :ship_id,  numericality: { other_than: 1, message: "can't be blank" } 
+  
 
     validates :price, numericality: { with: /\A[0-9]+\z/,message: 'is invalid. Input half-width characters' }
-    validates :price, numericality: { greater_than: 300, less_than: 9999999, message: 'is out of setting range' }
+    validates :price, numericality: { greater_than: 299, less_than: 10000000, message: 'is out of setting range' }
 
-  validates :category_id, :status_id, :fee_id, :area_id, :ship_id,  numericality: { other_than: 1, message: "can't be blank" } 
+ 
+  end
 end
