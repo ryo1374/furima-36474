@@ -18,11 +18,11 @@ class Item < ApplicationRecord
     validates :fee_id,  numericality: { other_than: 1, message: "can't be blank" } 
     validates :area_id,  numericality: { other_than: 1, message: "can't be blank" } 
     validates :ship_id,  numericality: { other_than: 1, message: "can't be blank" } 
-  
+  end
 
     validates :price, numericality: { with: /\A[0-9]+\z/,message: 'is invalid. Input half-width characters' }
     validates :price, numericality: { greater_than: 299, less_than: 10000000, message: 'is out of setting range' }
 
  
-  end
+  
 end
