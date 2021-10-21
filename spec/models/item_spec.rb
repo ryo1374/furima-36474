@@ -85,19 +85,19 @@ RSpec.describe Item, type: :model do
       it 'priceが300未満では保存できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include("Price must be greater than 299")
       end
 
       it 'priceが10000000以上では保存できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
       end
 
       it 'priceが半角数字でなければ保存できない' do
-        @item.price = '３００'
+        @item.price = '１００００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
       it 'userが紐付いていなければ保存できない' do
