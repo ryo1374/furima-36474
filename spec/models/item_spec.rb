@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが9999999以下なら保存できる' do
-        @item.price < 10000000
+        @item.price < 10_000_000
         expect(@item).to be_valid
       end
 
@@ -25,7 +25,6 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-  
 
     context '商品が出品できない場合' do
       it 'imageが空では保存できない' do
@@ -85,25 +84,25 @@ RSpec.describe Item, type: :model do
       it 'priceが300未満では保存できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 299")
+        expect(@item.errors.full_messages).to include('Price must be greater than 299')
       end
 
       it 'priceが10000000以上では保存できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+        expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
 
       it 'priceが半角数字でなければ保存できない' do
         @item.price = '１００００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'userが紐付いていなければ保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

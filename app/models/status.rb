@@ -1,5 +1,5 @@
 class Status < ActiveHash::Base
-include ActiveHash::Associations
+  include ActiveHash::Associations
 
   self.data = [
     { id: 1, name: '--' },
@@ -12,5 +12,4 @@ include ActiveHash::Associations
   ]
 
   has_many :items
-  
-  end
+end
