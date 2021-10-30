@@ -7,7 +7,7 @@ class OrderAddress
     validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :municipalities
     validates :address
-    validates :phone_number, format: { with: /\A0[0-9]+\z/, message: 'number is invalid. Include half-width numbers' }   
+    validates :phone_number, format: { with: /\A0[0-9]+\z/, message: 'is invalid. Input only number' }   
   end
     validates :phone_number, length: { is: 11, message: "is too short"}
   def save
