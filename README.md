@@ -49,7 +49,7 @@
 | address            | string    | null: false                    |
 | building_name      | text      |                                |
 | phone_number       | string    | null: false                    |
-| user               | reference | null: false, foreign_key: true |
+| order               | reference | null: false, foreign_key: true |
 
 ### Association
 
