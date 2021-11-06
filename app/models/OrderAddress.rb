@@ -15,6 +15,6 @@ class OrderAddress
     validates :phone_number, length: { in: 10..11 }
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(postal_code: postal_code, area_id: area_id, municipalities: municipalities, address: address, building_name: building_name, phone_number: phone_number) 
+    Address.create(postal_code: postal_code, area_id: area_id, municipalities: municipalities, address: address, building_name: building_name, phone_number: phone_number, order_id: order.id) 
   end
 end
